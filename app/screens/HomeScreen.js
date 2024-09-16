@@ -1,28 +1,40 @@
 import React from "react";
+import { StyleSheet, View } from "react-native";
 
 import Background from "../components/Background";
 import Logo from "../components/Logo";
 import Header from "../components/Header";
-import Paragraph from "../components/Paragraph";
 import Button from "../components/Button";
+import BackButton from "../components/BackButton";
 
 export default function HomeScreen({ navigation }) {
   return (
     <Background>
       <Logo />
-      <Header>Bem-vindo 💫</Header>
-      <Paragraph>É um prazer ter você aqui.</Paragraph>
-      <Button
-        mode="outlined"
-        onPress={() =>
-          navigation.reset({
-            index: 0,
-            routes: [{ name: "StartScreen" }],
-          })
-        }
-      >
-        Sign out
-      </Button>
+      <Header>Bem-vindo ao Oceanic.</Header>
+      <View style={styles.buttonContainer}>
+        <Button
+          mode="contained"
+          onPress={() => navigation.navigate("RegisterIncident")}
+        >
+          Cadastrar Incidente
+        </Button>
+        <Button
+          mode="contained"
+          onPress={() => navigation.navigate("ViewIncidents")}
+        >
+          Visualizar Incidentes
+        </Button>
+      </View>
     </Background>
   );
 }
+
+const styles = StyleSheet.create({
+  buttonContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+  },
+});
